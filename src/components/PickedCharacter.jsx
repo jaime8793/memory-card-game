@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 function PickedCharacters({
   highScore,
   score,
@@ -5,15 +7,12 @@ function PickedCharacters({
   setScore,
   setHighScore,
 }) {
-  console.log(
-    `This are the picked characters pickedCharacters`,
-    pickedCharacters
-  );
-    
+  console.log("These are the picked characters:", pickedCharacters);
 
   return (
-    <div>
-      score:{score} highScore:{highScore}
+    <div className="flex space-x-1">
+      <h2>Score: {score}</h2>
+      <h2>HighScore: {highScore}</h2>
     </div>
   );
 }

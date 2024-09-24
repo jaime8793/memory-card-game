@@ -9,21 +9,23 @@ function App() {
   const [pickedCharacters, setPickedCharacters] = useState([]);
 
   // Function to handle character click
-  function onClick(character, score, highScore) {
-    setPickedCharacters((prevPickedCharacters) => [
-      ...prevPickedCharacters,
-      {
-        id: character._id,
-        name: character.name,
-      },
-    ]);
-    if (pickedCharacters.includes(character)) {
-      setHighScore(0);
+  function onClick(character) {
+    const alreadyPicked = pickedCharacters.some(
+      (pickedCharacter) => pickedCharacter.id === character._id
+    );
+
+    if (alreadyPicked) {
+      // Reset the score if the character was already picked
       setScore(0);
+      setPickedCharacters([]);
     } else {
-      score = score + 1;
-      highScore = highScore + 1;
-      console.log(score,highScore)
+      // Add new character to picked list and increment score
+      setPickedCharacters((prevPickedCharacters) => [
+        ...prevPickedCharacters,
+        { id: character._id, name: character.name },
+      ]);
+      setScore((prevScore) => prevScore + 1);
+      setHighScore((prevHighScore) => Math.max(prevHighScore, score + 1));
     }
   }
 
@@ -41,7 +43,6 @@ function App() {
         setHighScore={setHighScore}
         pickedCharacters={pickedCharacters}
         setPickedCharacters={setPickedCharacters}
-        onClick={onClick}
       />
       <FetchCharacters
         characters={characters}

@@ -8,7 +8,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [pickedCharacters, setPickedCharacters] = useState([]);
 
-  // Function to handle character click
+  
   function onClick(character) {
     const alreadyPicked = pickedCharacters.some(
       (pickedCharacter) => pickedCharacter.id === character._id

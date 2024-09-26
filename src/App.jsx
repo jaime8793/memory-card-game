@@ -29,7 +29,7 @@ function App() {
     }
   }
 
-  // Log the updated pickedCharacters whenever it changes
+  
   useEffect(() => {
     console.log("Updated pickedCharacters:", pickedCharacters);
   }, [pickedCharacters]);

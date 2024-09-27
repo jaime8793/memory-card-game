@@ -19,7 +19,7 @@ function App() {
       setScore(0);
       setPickedCharacters([]);
     } else {
-      // Add new character to picked list and increment score
+    
       setPickedCharacters((prevPickedCharacters) => [
         ...prevPickedCharacters,
         { id: character._id, name: character.name },
